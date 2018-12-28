@@ -63,10 +63,10 @@ void app_camera_main ()
     config.pin_sscb_scl = SIOC_GPIO_NUM;
     config.pin_pwdn = PWDN_GPIO_NUM;
     config.pin_reset = RESET_GPIO_NUM;
-    config.xclk_freq_hz = 20000000;
-    config.pixel_format = PIXFORMAT_JPEG;
+    config.xclk_freq_hz = 12000000;
+    config.pixel_format = PIXFORMAT_RGB565; // PIXFORMAT_RGB565, PIXFORMAT_YUV422, PIXFORMAT_GRAYSCALE
     //init with high specs to pre-allocate larger buffers
-    config.frame_size = FRAMESIZE_UXGA;
+    config.frame_size = FRAMESIZE_QQVGA;
     config.jpeg_quality = 10;
     config.fb_count = 2;
 
@@ -79,5 +79,5 @@ void app_camera_main ()
 
     //drop down frame size for higher initial frame rate
     sensor_t * s = esp_camera_sensor_get();
-    s->set_framesize(s, FRAMESIZE_QVGA);
+    s->set_framesize(s, FRAMESIZE_QQVGA);
 }
